@@ -10,6 +10,17 @@
     "type": "git",
     "url": "git+https://github.com/nikolenkoanton92/react-easy-paginate.git"
   },
+    "keywords": [
+    "react",
+    "reactjs",
+    "javascript",
+    "react-component",
+    "paginate",
+    "paginator",
+    "pagination",
+    "react-easy-paginate",
+    "page-lister"
+  ],
   "author": "Anton Nikoleno <nikolenkoanton92@gmail.com> (http://antonnikolenko.com/)",
   "license": "MIT",
   "bugs": {

@@ -1,0 +1,37 @@
+#react-easy-paginate ul{
+  display: inline-block;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#react-easy-paginate ul li{
+  display: inline;
+}
+
+#react-easy-paginate ul li a{
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  text-decoration: none;
+  background-color: #fff;
+  border:1px solid #ddd;
+  cursor: pointer;
+}
+
+#react-easy-paginate ul li:first-child a{
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+#react-easy-paginate ul li:last-child a{
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+#react-easy-paginate ul li a.active{
+  z-index: 3;
+  color:#fff;
+  cursor: pointer;
+  background-color: #337ab7;
+  border-color: #337ab7;
+}

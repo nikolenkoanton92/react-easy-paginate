@@ -28,7 +28,7 @@
   border-bottom-right-radius: 4px;
 }
 
-#react-east-paginate ul li a.active{
+#react-easy-paginate ul li a.active{
   z-index: 3;
   color:#fff;
   cursor: default;

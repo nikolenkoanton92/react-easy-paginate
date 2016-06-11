@@ -2,11 +2,11 @@
  * Module dependencies
  */
 import React from 'react'
-import NumerationList from './numeration-list'
 
 const ReactEasyPaginate = React.createClass({
   propTypes: {
     pageTotal: React.PropTypes.number.isRequired,
+    rangeDisplayed: React.PropTypes.number.isRequired,
     nextLabel: React.PropTypes.node,
     previousLabel: React.PropTypes.node,
     middleLabel: React.PropTypes.node,
@@ -26,25 +26,41 @@ const ReactEasyPaginate = React.createClass({
   handlePreviousPage(e) {
     var activePage = this.state.activePage - 1
     this.updateActivePage(activePage)
+    this.props.onClick(activePage)
   },
   handleNextPage(e) {
     var activePage = this.state.activePage + 1
     this.updateActivePage(activePage)
+    this.props.onClick(activePage)
   },
   handlePageNumClick(pageNum) {
     this.updateActivePage(pageNum)
+    this.props.onClick(pageNum)
   },
-
   renderNumerationList() {
     let pages = []
     let pageTotal = this.props.pageTotal
     let activePage = this.state.activePage
-    for (let i = 1; i <= pageTotal; i++) {
+    let middlePage = Math.ceil(this.props.rangeDisplayed / 2) + 1
+
+    let i = 1
+    let length = this.props.rangeDisplayed + 1
+
+    if (activePage > middlePage && pageTotal >= activePage + middlePage) {
+      i = activePage - middlePage + 1
+      length += i - 1
+    } else if (activePage > middlePage && pageTotal <= activePage + middlePage) {
+      i = pageTotal - this.props.rangeDisplayed + 1
+      length = pageTotal + 1
+    }
+
+    for (; i < length; i++) {
       let activeClassname = activePage === i ? 'active' : ''
       pages[i] = <li key={i} onClick={this.handlePageNumClick.bind(this, i)}>
       <a  className={activeClassname}>{i}</a>
       </li>
     }
+
     return pages
   },
   render() {

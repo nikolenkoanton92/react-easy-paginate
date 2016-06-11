@@ -15,7 +15,7 @@
   text-decoration: none;
   background-color: #fff;
   border:1px solid #ddd;
-
+  cursor: pointer;
 }
 
 #react-easy-paginate ul li:first-child a{
@@ -31,7 +31,7 @@
 #react-easy-paginate ul li a.active{
   z-index: 3;
   color:#fff;
-  cursor: default;
+  cursor: pointer;
   background-color: #337ab7;
   border-color: #337ab7;
 }

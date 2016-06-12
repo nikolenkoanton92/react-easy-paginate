@@ -9,9 +9,19 @@ const ReactEasyPaginate = React.createClass({
     rangeDisplayed: React.PropTypes.number.isRequired,
     nextLabel: React.PropTypes.node,
     previousLabel: React.PropTypes.node,
-    middleLabel: React.PropTypes.node,
     startPage: React.PropTypes.number,
-    onClick: React.PropTypes.func
+    onClick: React.PropTypes.func,
+    activeClass: React.PropTypes.string
+  },
+  getDefaultProps(){
+    var nextLabel = <a>Next</a>
+    var previousLabel = <a>Previous</a>
+
+    return{
+      activeClass: 'active',
+      nextLabel : nextLabel,
+      previousLabel: previousLabel
+    }
   },
   getInitialState() {
     return {
@@ -42,6 +52,7 @@ const ReactEasyPaginate = React.createClass({
     let pageTotal = this.props.pageTotal
     let activePage = this.state.activePage
     let middlePage = Math.ceil(this.props.rangeDisplayed / 2) + 1
+    let activeClass = this.props.activeClass
 
     let i = 1
     let length = this.props.rangeDisplayed + 1
@@ -55,7 +66,7 @@ const ReactEasyPaginate = React.createClass({
     }
 
     for (; i < length; i++) {
-      let activeClassname = activePage === i ? 'active' : ''
+      let activeClassname = activePage === i ? activeClass : ''
       pages[i] = <li key={i} onClick={this.handlePageNumClick.bind(this, i)}>
       <a  className={activeClassname}>{i}</a>
       </li>
@@ -69,9 +80,9 @@ const ReactEasyPaginate = React.createClass({
 
     return (
       <ul>
-      <li onClick={this.handlePreviousPage}><a>Previous</a></li>
+      <li onClick={this.handlePreviousPage}>{this.props.previousLabel}</li>
       {numerationList}
-      <li onClick={this.handleNextPage}><a>Next</a></li>
+      <li onClick={this.handleNextPage}>{this.props.nextLabel}</li>
       </ul>
       )
   }

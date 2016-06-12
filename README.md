@@ -24,6 +24,10 @@ import `react-easy-paginate/dist/react-easy-paginate.css`
 |`rangeDisplayed`|`Number`|`undefined`|Required. The range of page displayed|
 |`startPage`|`Number`|`1`|From which page starts|
 |`onClick`|`Function`|`undefined`|The method to call when click on next/previous page, return number of current page|
+|`nextLabel`|`node`|`<a>Next</a>`|Label for the next button|
+|`previousLabel`|`node`|`<a>Previous</a>|Label for the previous button|
+|`activeClass`|`String`|`active`|The className for the active page|
+|`labelDisabledClass`|`String`|`disabled`|The className for the disabled label|
 
 ## Example
 

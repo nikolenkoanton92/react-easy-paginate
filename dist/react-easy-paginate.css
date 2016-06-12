@@ -35,3 +35,8 @@
   background-color: #337ab7;
   border-color: #337ab7;
 }
+
+#react-easy-paginate ul li.disabled a{
+  cursor: not-allowed;
+  color: #777;
+}

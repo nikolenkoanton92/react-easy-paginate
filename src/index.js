@@ -11,7 +11,8 @@ const ReactEasyPaginate = React.createClass({
     previousLabel: React.PropTypes.node,
     startPage: React.PropTypes.number,
     onClick: React.PropTypes.func,
-    activeClass: React.PropTypes.string
+    activeClass: React.PropTypes.string,
+    labelDisabledClass: React.PropTypes.string
   },
   getDefaultProps(){
     var nextLabel = <a>Next</a>
@@ -20,32 +21,80 @@ const ReactEasyPaginate = React.createClass({
     return{
       activeClass: 'active',
       nextLabel : nextLabel,
-      previousLabel: previousLabel
+      previousLabel: previousLabel,
+      labelDisabledClass: 'disabled'
     }
   },
   getInitialState() {
     return {
-      activePage: this.props.startPage || 1
+      activePage: this.props.startPage || 1,
+      isPreviousLabelDisabled: false,
+      isNextLabelDisabled: false
+    }
+  },
+  componentDidMount: function(){
+    if(this.state.activePage === 1){
+      this.setState({
+        isPreviousLabelDisabled: true
+      })
+    }else if(this.state.activePage === this.props.pageTotal){
+      this.setState({
+        isNextLabelDisabled: true
+      })
     }
   },
   updateActivePage(activePage) {
+
+    if(activePage === 1){
+      this.disableLabel('previous')
+    }else if (activePage === this.props.pageTotal){
+      this.disableLabel('next')
+    }else if(activePage > 1 && this.state.isPreviousLabelDisabled){
+      this.enableLabel('previous')
+    }else if(activePage < this.props.pageTotal && this.state.isNextLabelDisabled){
+      this.enableLabel('next')
+    }
+
     this.setState({
       activePage: activePage
     })
+
+    this.props.onClick(activePage)
   },
   handlePreviousPage(e) {
     var activePage = this.state.activePage - 1
+
     this.updateActivePage(activePage)
-    this.props.onClick(activePage)
   },
   handleNextPage(e) {
     var activePage = this.state.activePage + 1
+
     this.updateActivePage(activePage)
-    this.props.onClick(activePage)
+  },
+  disableLabel(name){
+    if(name === 'next'){
+      this.setState({
+        isNextLabelDisabled : true
+      })
+    }else if(name === 'previous'){
+      this.setState({
+        isPreviousLabelDisabled : true
+      })
+    }
+  },
+  enableLabel(name){
+    if(name === 'next'){
+      this.setState({
+        isNextLabelDisabled : false
+      })
+    }else if(name === 'previous'){
+      this.setState({
+        isPreviousLabelDisabled : false
+      })
+    }
   },
   handlePageNumClick(pageNum) {
     this.updateActivePage(pageNum)
-    this.props.onClick(pageNum)
   },
   renderNumerationList() {
     let pages = []
@@ -78,15 +127,18 @@ const ReactEasyPaginate = React.createClass({
 
     let numerationList = this.renderNumerationList()
 
+    var nextLabelClass = this.state.isNextLabelDisabled ? this.props.labelDisabledClass : ''
+    var previousLabelClass = this.state.isPreviousLabelDisabled? this.props.labelDisabledClass : ''
+
     return (
       <ul>
-      <li onClick={this.handlePreviousPage}>{this.props.previousLabel}</li>
+      <li className={previousLabelClass} onClick={this.handlePreviousPage}>{this.props.previousLabel}</li>
       {numerationList}
-      <li onClick={this.handleNextPage}>{this.props.nextLabel}</li>
+      <li className={nextLabelClass} onClick={this.handleNextPage}>{this.props.nextLabel}</li>
       </ul>
       )
   }
 
 })
 
-export default ReactEasyPaginate;
+export default ReactEasyPaginate

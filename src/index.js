@@ -67,11 +67,20 @@ const ReactEasyPaginate = React.createClass({
     this.props.onClick(activePage)
   },
   handlePreviousPage(e) {
+
+    if (this.state.isPreviousLabelDisabled)
+      return false
+
+
     var activePage = this.state.activePage - 1
 
     this.updateActivePage(activePage)
   },
   handleNextPage(e) {
+
+    if (this.state.isNextLabelDisabled)
+      return false
+
     var activePage = this.state.activePage + 1
 
     this.updateActivePage(activePage)

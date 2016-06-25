@@ -32,12 +32,12 @@ const ReactEasyPaginate = React.createClass({
       isNextLabelDisabled: false
     }
   },
-  componentDidMount: function(){
-    if(this.state.activePage === 1){
+  componentDidMount: function() {
+    if (this.state.activePage === 1) {
       this.setState({
         isPreviousLabelDisabled: true
       })
-    }else if(this.state.activePage === this.props.pageTotal){
+    } else if (this.state.activePage === this.props.pageTotal) {
       this.setState({
         isNextLabelDisabled: true
       })
@@ -45,15 +45,20 @@ const ReactEasyPaginate = React.createClass({
   },
   updateActivePage(activePage) {
 
-    if(activePage === 1){
+    if (activePage === 1)
       this.disableLabel('previous')
-    }else if (activePage === this.props.pageTotal){
+
+
+    if (activePage === this.props.pageTotal)
       this.disableLabel('next')
-    }else if(activePage > 1 && this.state.isPreviousLabelDisabled){
+
+
+    if (activePage > 1 && this.state.isPreviousLabelDisabled)
       this.enableLabel('previous')
-    }else if(activePage < this.props.pageTotal && this.state.isNextLabelDisabled){
+
+    if (activePage < this.props.pageTotal && this.state.isNextLabelDisabled)
       this.enableLabel('next')
-    }
+
 
     this.setState({
       activePage: activePage
@@ -71,25 +76,25 @@ const ReactEasyPaginate = React.createClass({
 
     this.updateActivePage(activePage)
   },
-  disableLabel(name){
-    if(name === 'next'){
+  disableLabel(name) {
+    if (name === 'next') {
       this.setState({
-        isNextLabelDisabled : true
+        isNextLabelDisabled: true
       })
-    }else if(name === 'previous'){
+    } else if (name === 'previous') {
       this.setState({
-        isPreviousLabelDisabled : true
+        isPreviousLabelDisabled: true
       })
     }
   },
-  enableLabel(name){
-    if(name === 'next'){
+  enableLabel(name) {
+    if (name === 'next') {
       this.setState({
-        isNextLabelDisabled : false
+        isNextLabelDisabled: false
       })
-    }else if(name === 'previous'){
+    } else if (name === 'previous') {
       this.setState({
-        isPreviousLabelDisabled : false
+        isPreviousLabelDisabled: false
       })
     }
   },

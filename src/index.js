@@ -120,7 +120,9 @@ const ReactEasyPaginate = React.createClass({
     let i = 1
     let length = this.props.rangeDisplayed + 1
 
-    if (activePage > middlePage && pageTotal >= activePage + middlePage) {
+    if (pageTotal < this.props.rangeDisplayed) {
+      length = pageTotal + 1
+    } else if (activePage > middlePage && pageTotal >= activePage + middlePage) {
       i = activePage - middlePage + 1
       length += i - 1
     } else if (activePage > middlePage && pageTotal <= activePage + middlePage) {

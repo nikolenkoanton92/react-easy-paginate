@@ -14,13 +14,13 @@ const ReactEasyPaginate = React.createClass({
     activeClass: React.PropTypes.string,
     labelDisabledClass: React.PropTypes.string
   },
-  getDefaultProps(){
+  getDefaultProps() {
     var nextLabel = <a>Next</a>
     var previousLabel = <a>Previous</a>
 
-    return{
+    return {
       activeClass: 'active',
-      nextLabel : nextLabel,
+      nextLabel: nextLabel,
       previousLabel: previousLabel,
       labelDisabledClass: 'disabled'
     }
@@ -144,7 +144,7 @@ const ReactEasyPaginate = React.createClass({
     let numerationList = this.renderNumerationList()
 
     var nextLabelClass = this.state.isNextLabelDisabled ? this.props.labelDisabledClass : ''
-    var previousLabelClass = this.state.isPreviousLabelDisabled? this.props.labelDisabledClass : ''
+    var previousLabelClass = this.state.isPreviousLabelDisabled ? this.props.labelDisabledClass : ''
 
     return (
       <ul>

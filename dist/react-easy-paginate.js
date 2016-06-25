@@ -119,15 +119,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  updateActivePage: function updateActivePage(activePage) {
 
-	    if (activePage === 1) {
-	      this.disableLabel('previous');
-	    } else if (activePage === this.props.pageTotal) {
-	      this.disableLabel('next');
-	    } else if (activePage > 1 && this.state.isPreviousLabelDisabled) {
-	      this.enableLabel('previous');
-	    } else if (activePage < this.props.pageTotal && this.state.isNextLabelDisabled) {
-	      this.enableLabel('next');
-	    }
+	    if (activePage === 1) this.disableLabel('previous');
+
+	    if (activePage === this.props.pageTotal) this.disableLabel('next');
+
+	    if (activePage > 1 && this.state.isPreviousLabelDisabled) this.enableLabel('previous');
+
+	    if (activePage < this.props.pageTotal && this.state.isNextLabelDisabled) this.enableLabel('next');
 
 	    this.setState({
 	      activePage: activePage
@@ -136,11 +134,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.props.onClick(activePage);
 	  },
 	  handlePreviousPage: function handlePreviousPage(e) {
+
+	    if (this.state.isPreviousLabelDisabled) return false;
+
 	    var activePage = this.state.activePage - 1;
 
 	    this.updateActivePage(activePage);
 	  },
 	  handleNextPage: function handleNextPage(e) {
+
+	    if (this.state.isNextLabelDisabled) return false;
+
 	    var activePage = this.state.activePage + 1;
 
 	    this.updateActivePage(activePage);
@@ -180,7 +184,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var i = 1;
 	    var length = this.props.rangeDisplayed + 1;
 
-	    if (activePage > middlePage && pageTotal >= activePage + middlePage) {
+	    if (pageTotal < this.props.rangeDisplayed) {
+	      length = pageTotal + 1;
+	    } else if (activePage > middlePage && pageTotal >= activePage + middlePage) {
 	      i = activePage - middlePage + 1;
 	      length += i - 1;
 	    } else if (activePage > middlePage && pageTotal <= activePage + middlePage) {

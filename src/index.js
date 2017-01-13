@@ -12,6 +12,14 @@ class ReactEasyPaginate extends Component {
       isPreviousLabelDisabled: false,
       isNextLabelDisabled: false,
     };
+
+    this.updateActivePage = this.updateActivePage.bind(this);
+    this.handlePreviousPage = this.handlePreviousPage.bind(this);
+    this.handleNextPage = this.handleNextPage.bind(this);
+    this.disableLabel = this.disableLabel.bind(this);
+    this.enableLabel = this.enableLabel.bind(this);
+    this.handlePageNumClick = this.handlePageNumClick.bind(this);
+    this.renderNumerationList = this.renderNumerationList.bind(this);
   }
 
   componentDidMount() {

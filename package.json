@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/nikolenkoanton92/react-easy-paginate.git"
   },
-    "keywords": [
+  "keywords": [
     "react",
     "reactjs",
     "javascript",
@@ -27,10 +27,10 @@
     "url": "https://github.com/nikolenkoanton92/react-easy-paginate/issues"
   },
   "homepage": "https://github.com/nikolenkoanton92/react-easy-paginate#readme",
-    "peerDependencies": {
+  "peerDependencies": {
     "react": "^0.14.7"
   },
-    "devDependencies": {
+  "devDependencies": {
     "babel": "^6.0.0",
     "babel-cli": "^6.9.0",
     "babel-core": "^6.0.0",
@@ -39,6 +39,11 @@
     "babel-preset-react": "^6.5.0",
     "clean-css": "^3.4.17",
     "css-loader": "^0.23.1",
+    "eslint": "^3.13.1",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-react": "^6.9.0",
     "express": "^4.13.4",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",

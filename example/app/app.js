@@ -1,56 +1,54 @@
-import React from 'react'
-import { render } from 'react-dom'
-import ReactEasyPaginate from 'react-easy-paginate'
-import 'react-easy-paginate.css'
-import phoneBookData from './data/phone-book'
+import React from 'react';
+import { render } from 'react-dom';
+import ReactEasyPaginate from 'react-easy-paginate';
+import 'react-easy-paginate.css';
+import phoneBookData from './data/phone-book';
 
-const limit = 10
-const length = Math.floor(phoneBookData.length / limit) + 1
+const limit = 10;
+const length = Math.floor(phoneBookData.length / limit) + 1;
 
 const App = React.createClass({
   getInitialState() {
     return {
-      data: []
-    }
+      data: [],
+    };
   },
   handlePaginateClick(pageNum) {
-    var offset = (pageNum - 1) * 10
+    const offset = (pageNum - 1) * 10;
 
-    this.getData(offset, limit)
+    this.getData(offset, limit);
   },
   componentDidMount() {
-    var offset = 0
-    this.getData(offset, limit)
+    const offset = 0;
+    this.getData(offset, limit);
   },
-  getData: function(offset, limit) {
-    var total = offset + limit
-    var data = phoneBookData.slice(offset, total)
+  getData(offset, limit) {
+    const total = offset + limit;
+    const data = phoneBookData.slice(offset, total);
 
     this.setState({
-      data: data
-    })
+      data,
+    });
   },
-  renderData: function() {
-    return this.state.data.map(function(el, idx) {
-      return <li key={idx}>Name: {el.name}, phone number : {el.phone}</li>
-    })
+  renderData() {
+    return this.state.data.map((el, idx) => <li key={idx}>Name: {el.name}, phone number : {el.phone}</li>);
   },
   render() {
-    var dataEl = this.renderData()
+    const dataEl = this.renderData();
     return (
       <div className="container">
-      <h1>Example App</h1>
-      <ul>
-      {dataEl}
-      </ul>
-      <div id="react-easy-paginate">
-        <ReactEasyPaginate pageTotal={length} rangeDisplayed={5} onClick={this.handlePaginateClick} />
+        <h1>Example App</h1>
+        <ul>
+          {dataEl}
+        </ul>
+        <div id="react-easy-paginate">
+          <ReactEasyPaginate pageTotal={length} rangeDisplayed={5} onClick={this.handlePaginateClick} />
         </div>
       </div>
-      )
-  }
-})
+    );
+  },
+});
 
 render((
   <App />
-  ), document.getElementById('example'))
+  ), document.getElementById('example'));

@@ -33,6 +33,9 @@
     "react": "^15.0.0"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^3.2.12",
+    "@storybook/addon-links": "^3.2.12",
+    "@storybook/react": "^3.2.12",
     "babel": "^6.0.0",
     "babel-cli": "^6.9.0",
     "babel-core": "^6.0.0",
@@ -43,17 +46,14 @@
     "css-loader": "^0.23.1",
     "eslint": "^3.13.1",
     "eslint-config-airbnb": "^14.0.0",
-    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
-    "eslint-plugin-react": "^6.9.0",
+    "eslint-plugin-react": "^6.10.3",
     "express": "^4.13.4",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.0",
-    "webpack-dev-middleware": "^1.6.1",
-    "@storybook/react": "^3.2.12",
-    "@storybook/addon-actions": "^3.2.12",
-    "@storybook/addon-links": "^3.2.12"
+    "webpack-dev-middleware": "^1.6.1"
   }
 }
